@@ -21,6 +21,10 @@ c.NotebookApp.token = ''
 c.NotebookApp.base_url = '$BASEURL'
 EOF
 
+echo "debug.."
+cat /config.py
+
+echo "starting notebook"
 jupyter notebook --config=/config.py ./output.ipynb
 
 
