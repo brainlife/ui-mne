@@ -12,6 +12,15 @@ jupyter trust /output.ipynb #this works
 
 echo "starting jupyter notebook server"
 #jupyter notebook --allow-root /test.ipynb
-jupyter notebook --allow-root --NotebookApp.token='' --ip 0.0.0.0 --port 80 ./output.ipynb
+
+cat <<EOF > /config.py
+c.NotebookApp.allow_root = True
+c.NotebookApp.ip = '0.0.0.0'
+c.NotebookApp.port = 80
+c.NotebookApp.token = ''
+c.NotebookApp.base_url = '$BASEURL'
+EOF
+
+jupyter notebook --config=/config.py ./output.ipynb
 
 
