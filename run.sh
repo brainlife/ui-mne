@@ -18,7 +18,8 @@ c.NotebookApp.allow_root = True
 c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.port = 80
 c.NotebookApp.token = ''
-c.NotebookApp.base_url = '$BASEURL'
+c.NotebookApp.base_url = '$BASEURL/'
+c.NotebookApp.webapp_settings = {'static_url_prefix':'$BASEURL/static/'}
 EOF
 
 echo "debug.."
