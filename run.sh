@@ -3,23 +3,23 @@
 set -e
 set -x
 
-echo "trusting test.ipynb"
-jupyter trust /test.ipynb #this works
+echo "trusting main.ipynb"
+jupyter trust /main.ipynb
 
 echo "running notebook prior to opening it"
-jupyter nbconvert --to notebook --execute /test.ipynb --output /output.ipynb
-jupyter trust /output.ipynb #this works
+jupyter nbconvert --to notebook --execute /main.ipynb --output /output.ipynb
+jupyter trust /output.ipynb
 
 echo "starting jupyter notebook server"
-#jupyter notebook --allow-root /test.ipynb
 
 cat <<EOF > /config.py
 c.NotebookApp.allow_root = True
 c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.port = 80
+#c.NotebookApp.token = '$TOKEN'
 c.NotebookApp.token = ''
-c.NotebookApp.base_url = '$BASEURL/'
-c.NotebookApp.webapp_settings = {'static_url_prefix':'$BASEURL/static/'}
+c.NotebookApp.base_url = '$BASEURL'
+#c.NotebookApp.webapp_settings = {'static_url_prefix':'$BASEURL'}
 EOF
 
 echo "debug.."
