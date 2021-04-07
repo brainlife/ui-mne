@@ -5,8 +5,9 @@ RUN pip3 install notebook
 RUN pip3 install matplotlib
 RUN pip3 install ipympl
 
-ADD test.ipynb /test.ipynb
+#ADD test.ipynb /test.ipynb
 ADD main.ipynb /main.ipynb
-ADD run.sh /run.sh
+RUN jupyter trust /main.ipynb
 
+ADD run.sh /run.sh
 ENTRYPOINT /run.sh
